@@ -1,0 +1,10 @@
+crewai[tools]
+openai
+python-dotenv
+fastapi
+uvicorn[standard]
+lancedb
+pandas
+pyarrow
+google-search-results
+serpapi
