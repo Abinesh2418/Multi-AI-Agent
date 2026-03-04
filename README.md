@@ -4,14 +4,12 @@ A production-ready, scalable multi-agent AI system built with **CrewAI**, **Fast
 
 ## Architecture
 
-The platform provides 9 specialized AI agents, each equipped with a dedicated tool:
+The platform provides 7 specialized AI agents, each equipped with a dedicated tool:
 
 | Agent | Tool | Purpose |
 |---|---|---|
-| `web-search-agent` | WebsiteSearchTool | Search website content |
 | `file-reader-agent` | FileReadTool | Read and analyze files |
 | `file-writer-agent` | FileWriterTool | Generate and write files |
-| `pdf-search-agent` | PDFSearchTool | Search PDF documents |
 | `csv-rag-agent` | CSVSearchTool (LanceDB) | RAG search over CSV data |
 | `scrape-agent` | ScrapeWebsiteTool | Scrape website content |
 | `google-search-agent` | SerpApiGoogleSearchTool | Google search via SerpAPI |
@@ -28,13 +26,11 @@ crew-ai-platform/
 │   ├── config/
 │   │   └── settings.py      # Environment & config
 │   └── agents/
-│       ├── web-search-agent/
+│       ├── file-reader-agent/
 │       │   ├── tool.py
 │       │   ├── agent.py
 │       │   └── task.py
-│       ├── file-reader-agent/
 │       ├── file-writer-agent/
-│       ├── pdf-search-agent/
 │       ├── csv-rag-agent/
 │       ├── scrape-agent/
 │       ├── google-search-agent/
@@ -60,7 +56,7 @@ cp .env.template .env
 Edit `.env` and fill in your API keys:
 
 ```
-OPENAI_API_KEY=sk-...
+GROQ_API_KEY=gsk_...
 SERPAPI_API_KEY=...
 SERPER_API_KEY=...
 ```
@@ -107,7 +103,7 @@ Execute a query with a specific agent.
 
 ```json
 {
-  "agent_type": "web-search-agent",
+  "agent_type": "scrape-agent",
   "query": "latest AI trends"
 }
 ```
@@ -140,6 +136,6 @@ No changes to `main.py` or the frontend are needed — the system dynamically di
 
 - **Backend:** Python, FastAPI, CrewAI, crewai-tools, LanceDB
 - **Frontend:** React, TypeScript, Vite
-- **LLM:** OpenAI GPT-4o-mini
-- **Embeddings:** text-embedding-3-small
+- **LLM:** Groq Llama 3.3 70B Versatile
+- **Embeddings:** sentence-transformers/all-MiniLM-L6-v2 (local)
 - **Vector DB:** LanceDB

@@ -1,4 +1,5 @@
 from crewai import Agent
+from backend.config.settings import GROQ_LLM
 from .tool import google_shopping_tool
 
 shopping_agent = Agent(
@@ -10,5 +11,6 @@ shopping_agent = Agent(
         "well-informed purchasing recommendations to users."
     ),
     tools=[google_shopping_tool],
+    llm=GROQ_LLM,
     verbose=True,
 )

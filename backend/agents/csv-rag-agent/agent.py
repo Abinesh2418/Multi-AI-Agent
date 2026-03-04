@@ -1,4 +1,5 @@
 from crewai import Agent
+from backend.config.settings import GROQ_LLM
 from .tool import csv_search_tool
 
 csv_rag_agent = Agent(
@@ -11,5 +12,6 @@ csv_rag_agent = Agent(
         "on the underlying data."
     ),
     tools=[csv_search_tool],
+    llm=GROQ_LLM,
     verbose=True,
 )

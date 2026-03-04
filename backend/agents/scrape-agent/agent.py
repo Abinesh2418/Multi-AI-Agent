@@ -1,4 +1,5 @@
 from crewai import Agent
+from backend.config.settings import GROQ_LLM
 from .tool import scrape_tool
 
 scrape_agent = Agent(
@@ -10,5 +11,6 @@ scrape_agent = Agent(
         "clean, well-organized data from scraped content."
     ),
     tools=[scrape_tool],
+    llm=GROQ_LLM,
     verbose=True,
 )

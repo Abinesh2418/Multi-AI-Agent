@@ -1,4 +1,5 @@
 from crewai import Agent
+from backend.config.settings import GROQ_LLM
 from .tool import file_writer_tool
 
 file_writer_agent = Agent(
@@ -10,5 +11,6 @@ file_writer_agent = Agent(
         "You understand various file formats and write accordingly."
     ),
     tools=[file_writer_tool],
+    llm=GROQ_LLM,
     verbose=True,
 )

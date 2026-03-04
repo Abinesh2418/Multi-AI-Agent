@@ -1,4 +1,5 @@
 from crewai import Agent
+from backend.config.settings import GROQ_LLM
 from .tool import google_search_tool
 
 google_search_agent = Agent(
@@ -10,5 +11,6 @@ google_search_agent = Agent(
         "to access real-time Google search results and synthesize them into actionable insights."
     ),
     tools=[google_search_tool],
+    llm=GROQ_LLM,
     verbose=True,
 )

@@ -8,10 +8,6 @@ import backend.config.settings  # noqa: F401 — triggers env var loading
 AGENTS_DIR = Path(__file__).resolve().parent / "agents"
 
 AGENT_CONFIGS = {
-    "web-search-agent": {
-        "agent_var": "web_search_agent",
-        "task_factory": "create_web_search_task",
-    },
     "file-reader-agent": {
         "agent_var": "file_reader_agent",
         "task_factory": "create_file_reader_task",
@@ -19,10 +15,6 @@ AGENT_CONFIGS = {
     "file-writer-agent": {
         "agent_var": "file_writer_agent",
         "task_factory": "create_file_writer_task",
-    },
-    "pdf-search-agent": {
-        "agent_var": "pdf_search_agent",
-        "task_factory": "create_pdf_search_task",
     },
     "csv-rag-agent": {
         "agent_var": "csv_rag_agent",

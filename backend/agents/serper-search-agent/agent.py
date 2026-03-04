@@ -1,4 +1,5 @@
 from crewai import Agent
+from backend.config.settings import GROQ_LLM
 from .tool import serper_search_tool
 
 serper_search_agent = Agent(
@@ -10,5 +11,6 @@ serper_search_agent = Agent(
         "and presenting it in a clear, organized manner."
     ),
     tools=[serper_search_tool],
+    llm=GROQ_LLM,
     verbose=True,
 )

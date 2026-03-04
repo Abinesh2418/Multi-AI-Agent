@@ -1,5 +1,4 @@
 crewai[tools]
-openai
 python-dotenv
 fastapi
 uvicorn[standard]
@@ -8,3 +7,4 @@ pandas
 pyarrow
 google-search-results
 serpapi
+sentence-transformers

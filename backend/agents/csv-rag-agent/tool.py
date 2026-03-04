@@ -1,22 +1,29 @@
-import os
 import csv
 from pathlib import Path
 from typing import Type
 
 import lancedb
-import openai
+from sentence_transformers import SentenceTransformer
 from crewai.tools import BaseTool
 from pydantic import BaseModel, Field
 
 LANCEDB_DIR = str(Path(__file__).resolve().parents[2] / ".lancedb")
 TABLE_NAME = "csv_rows"
-EMBEDDING_MODEL = "text-embedding-3-small"
+EMBEDDING_MODEL_NAME = "all-MiniLM-L6-v2"
+
+_embedding_model = None
+
+
+def _get_model() -> SentenceTransformer:
+    global _embedding_model
+    if _embedding_model is None:
+        _embedding_model = SentenceTransformer(EMBEDDING_MODEL_NAME)
+    return _embedding_model
 
 
 def _get_embedding(text: str) -> list[float]:
-    client = openai.OpenAI(api_key=os.environ["OPENAI_API_KEY"])
-    resp = client.embeddings.create(model=EMBEDDING_MODEL, input=text)
-    return resp.data[0].embedding
+    model = _get_model()
+    return model.encode(text).tolist()
 
 
 def _ingest_csv(csv_path: str) -> lancedb.table.Table:

@@ -1,4 +1,5 @@
 from crewai import Agent
+from backend.config.settings import GROQ_LLM
 from .tool import file_read_tool
 
 file_reader_agent = Agent(
@@ -10,5 +11,6 @@ file_reader_agent = Agent(
         "well-organized summaries of file contents."
     ),
     tools=[file_read_tool],
+    llm=GROQ_LLM,
     verbose=True,
 )

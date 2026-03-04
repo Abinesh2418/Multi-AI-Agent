@@ -1,4 +1,5 @@
 from crewai import Agent
+from backend.config.settings import GROQ_MODEL
 from .tool import web_search_tool
 
 web_search_agent = Agent(
@@ -10,5 +11,6 @@ web_search_agent = Agent(
         "understanding search queries and returning concise, useful results."
     ),
     tools=[web_search_tool],
+    llm=GROQ_MODEL,
     verbose=True,
 )

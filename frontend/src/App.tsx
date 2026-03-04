@@ -10,10 +10,8 @@ interface Message {
 }
 
 const AGENTS = [
-  { value: "web-search-agent",    label: "Web Search",    tool: "WebsiteSearchTool",          color: "#58a6ff" },
   { value: "file-reader-agent",   label: "File Reader",   tool: "FileReadTool",               color: "#3fb950" },
   { value: "file-writer-agent",   label: "File Writer",   tool: "FileWriterTool",             color: "#a371f7" },
-  { value: "pdf-search-agent",    label: "PDF Search",    tool: "PDFSearchTool",              color: "#f0883e" },
   { value: "csv-rag-agent",       label: "CSV RAG",       tool: "CSVSearchTool + LanceDB",    color: "#d29922" },
   { value: "scrape-agent",        label: "Scraper",       tool: "ScrapeWebsiteTool",          color: "#f778ba" },
   { value: "google-search-agent", label: "Google Search", tool: "SerpApiGoogleSearchTool",    color: "#79c0ff" },
@@ -22,10 +20,10 @@ const AGENTS = [
 ];
 
 const SUGGESTIONS = [
-  { title: "Search the web", text: "for latest AI trends in 2026", agent: "web-search-agent" },
   { title: "Analyze CSV data", text: "Who earns the highest salary?", agent: "csv-rag-agent" },
   { title: "Scrape a website", text: "Extract quotes from quotes.toscrape.com", agent: "scrape-agent" },
   { title: "Search Google", text: "Best AI frameworks for agents", agent: "google-search-agent" },
+  { title: "Read a file", text: "Summarize the contents of README.md", agent: "file-reader-agent" },
 ];
 
 function formatTime(date: Date) {
